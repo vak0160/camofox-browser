@@ -19,9 +19,9 @@ if [ ! -d "node_modules" ]; then
 fi
 
 # Check if camoufox browser is installed
-if ! npx camoufox-js --version &> /dev/null 2>&1; then
+if ! npx camoufox --version &> /dev/null 2>&1; then
     echo "Fetching Camoufox browser..."
-    npx camoufox-js fetch
+    npx camoufox fetch
 fi
 
 # Install nodemon globally if not available

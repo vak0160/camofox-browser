@@ -59,12 +59,12 @@ RUN apt-get update && apt-get install -y \
 #     so the build-time download/verify and the external-executable path land on
 #     ${XDG_CACHE_HOME}/camoufox.
 #
-#  2. CAMOUFOX_INSTALL_DIR -- used by the camoufox-js library that actually
+#  2. CAMOUFOX_INSTALL_DIR -- used by the camoufox library that actually
 #     LAUNCHES the browser at runtime. That library IGNORES XDG_CACHE_HOME; left
 #     to itself it resolves os.homedir()+'/.cache/camoufox', which is exactly the
 #     bug: under a non-root / arbitrary UID os.homedir() is no longer /root, the
 #     baked binary isn't found, and it re-downloads 1.3 GB at runtime and fails.
-#     camoufox-js honors CAMOUFOX_INSTALL_DIR as an explicit override (intended
+#     camoufox honors CAMOUFOX_INSTALL_DIR as an explicit override (intended
 #     for baking into an image layer), so pinning it to the baked path makes the
 #     browser discoverable regardless of home directory or UID.
 ENV XDG_CACHE_HOME=/opt/camoufox-cache

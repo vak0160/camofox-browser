@@ -75,7 +75,7 @@ describe('postinstall external executable handling', () => {
 });
 
 describe('postinstall downloader', () => {
-  test('uses camoufox-js without a package-owned child process', async () => {
+  test('uses camoufox without a package-owned child process', async () => {
     const install = jest.fn().mockResolvedValue(undefined);
     const downloadGeoIp = jest.fn();
     const downloadAddons = jest.fn().mockResolvedValue(undefined);

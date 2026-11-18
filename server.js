@@ -1,5 +1,5 @@
-import { Camoufox, launchOptions } from 'camoufox-js';
-import { VirtualDisplay } from 'camoufox-js/dist/virtdisplay.js';
+import { Camoufox, launchOptions } from 'camoufox';
+import { VirtualDisplay } from 'camoufox/dist/virtdisplay.js';
 import { firefox } from 'playwright-core';
 import express from 'express';
 import crypto from 'crypto';
@@ -953,10 +953,10 @@ function clearBrowserIdleTimer() {
 
 // Detects errors that retrying cannot recover from (e.g., Camoufox binary
 // missing because postinstall was skipped). The user must run
-// `npx camoufox-js fetch` and restart; looping on this wastes resources
+// `npx camoufox fetch` and restart; looping on this wastes resources
 // and buries the actionable error under noise.
 //
-// Sentinel: matches the human-readable message thrown by camoufox-js's
+// Sentinel: matches the human-readable message thrown by camoufox's
 // FileNotFoundError in dist/pkgman.js (Version.fromPath). FileNotFoundError
 // is not exported from the public API, so substring matching is the only
 // available hook. If the upstream message changes, this regex needs an
@@ -969,7 +969,7 @@ function camoufoxInstallRemediation() {
   if (CONFIG.camoufoxExecutablePath) {
     return 'verify CAMOUFOX_EXECUTABLE points to a Camoufox bundle with properties.json, version.json, and fontconfig/';
   }
-  return 'run `npx camoufox-js fetch` then restart the server';
+  return 'run `npx camoufox fetch` then restart the server';
 }
 
 function scheduleBrowserWarmRetry(delayMs = 5000) {
